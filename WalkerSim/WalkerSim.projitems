@@ -14,10 +14,12 @@
     <Compile Include="$(MSBuildThisFileDirectory)Config.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)FixedBufferList.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Grid.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HeightMapGenerator.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ImageUtils.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Logging.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MapData.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Math.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ObstacleMap.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Random.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Roads.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Simulation.Active.cs" />

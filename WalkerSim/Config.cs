@@ -73,6 +73,8 @@ namespace WalkerSim
             AvoidPOIs,
             [XmlEnum("WorldEvents")]
             WorldEvents,
+            [XmlEnum("AvoidObstacles")]
+            AvoidObstacles,
         }
 
         public class MovementProcessor
@@ -224,6 +226,12 @@ namespace WalkerSim
                                 Type = MovementProcessorType.WorldEvents,
                                 Distance = 0f,
                                 Power = 0.0050f,
+                            },
+                            new MovementProcessor()
+                            {
+                                Type = MovementProcessorType.AvoidObstacles,
+                                Distance = 0f,
+                                Power = 1.0000f,
                             },
                         }
                     },

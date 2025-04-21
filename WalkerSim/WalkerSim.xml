@@ -19,6 +19,7 @@
             <Processor Type="Wind" Distance="0" Power="0.15" />
             <Processor Type="AvoidSameGroup" Distance="25" Power="0.015" />
             <Processor Type="AvoidOtherGroup" Distance="35" Power="0.0001" />
+            <Processor Type="AvoidObstacles" Distance="3.0" Power="1.0" />
         </ProcessorGroup>
         <ProcessorGroup Group="-1" SpeedScale="1" Color="Red">
             <Processor Type="StickToRoads" Distance="0" Power="0.07" />
@@ -27,16 +28,19 @@
             <Processor Type="StickToPOIs" Distance="0" Power="0.001" />
             <Processor Type="FlockSameGroup" Distance="30" Power="0.01" />
             <Processor Type="AlignSameGroup" Distance="30" Power="0.01" />
+            <Processor Type="AvoidObstacles" Distance="3.0" Power="1.0" />
         </ProcessorGroup>
         <ProcessorGroup Group="-1" SpeedScale="1" Color="#80FF00">
             <Processor Type="StickToRoads" Distance="0" Power="0.1" />
             <Processor Type="StickToPOIs" Distance="0" Power="0.2" />
             <Processor Type="AvoidSameGroup" Distance="60" Power="0.25" />
+            <Processor Type="AvoidObstacles" Distance="3.0" Power="1.0" />
         </ProcessorGroup>
         <ProcessorGroup Group="-1" SpeedScale="1" Color="#80FF00">
             <Processor Type="StickToRoads" Distance="0" Power="0.1" />
             <Processor Type="StickToPOIs" Distance="0" Power="0.2" />
             <Processor Type="AvoidSameGroup" Distance="60" Power="0.25" />
+            <Processor Type="AvoidObstacles" Distance="3.0" Power="1.0" />
         </ProcessorGroup>
         <ProcessorGroup Group="-1" SpeedScale="1" Color="#80FFFF">
             <Processor Type="Wind" Distance="0" Power="0.01" />
@@ -44,12 +48,14 @@
             <Processor Type="AvoidSameGroup" Distance="15" Power="0.01" />
             <Processor Type="AvoidOtherGroup" Distance="40" Power="0.001" />
             <Processor Type="FlockOtherGroup" Distance="60" Power="0.1" />
+            <Processor Type="AvoidObstacles" Distance="3.0" Power="1.0" />
         </ProcessorGroup>
         <ProcessorGroup Group="-1" SpeedScale="1" Color="#8000FF">
             <Processor Type="StickToRoads" Distance="0" Power="0.2" />
             <Processor Type="Wind" Distance="0" Power="0.15" />
             <Processor Type="AvoidSameGroup" Distance="25" Power="0.015" />
             <Processor Type="AvoidOtherGroup" Distance="35" Power="0.0001" />
+            <Processor Type="AvoidObstacles" Distance="3.0" Power="1.0" />
         </ProcessorGroup>
         <ProcessorGroup Group="-1" SpeedScale="1" Color="#80FFFF">
             <Processor Type="Wind" Distance="0" Power="0.01" />
@@ -57,6 +63,7 @@
             <Processor Type="AvoidSameGroup" Distance="15" Power="0.01" />
             <Processor Type="AvoidOtherGroup" Distance="40" Power="0.001" />
             <Processor Type="FlockOtherGroup" Distance="60" Power="0.1" />
+            <Processor Type="AvoidObstacles" Distance="3.0" Power="1.0" />
         </ProcessorGroup>
         <ProcessorGroup Group="-1" SpeedScale="1" Color="White">
             <Processor Type="Wind" Distance="0" Power="0.01" />
@@ -64,6 +71,10 @@
             <Processor Type="AvoidOtherGroup" Distance="40" Power="0.001" />
             <Processor Type="FlockOtherGroup" Distance="60" Power="0.1" />
             <Processor Type="AlignAnyGroup" Distance="60" Power="0.1" />
+            <Processor Type="AvoidObstacles" Distance="3.0" Power="1.0" />
+        </ProcessorGroup>
+        <ProcessorGroup Group="-1" SpeedScale="1.0" Color="Pink">
+            <Processor Type="AvoidObstacles" Distance="3.0" Power="1.0" />
         </ProcessorGroup>
     </MovementProcessors>
 </WalkerSim>

@@ -1,0 +1,13 @@
+C:\Users\geoff\AppData\Roaming\7DaysToDie\WalkerSim2_Edit\Build\Debug\Tests\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
+C:\Users\geoff\AppData\Roaming\7DaysToDie\WalkerSim2_Edit\Build\Debug\Tests\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
+C:\Users\geoff\AppData\Roaming\7DaysToDie\WalkerSim2_Edit\Build\Debug\Tests\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
+C:\Users\geoff\AppData\Roaming\7DaysToDie\WalkerSim2_Edit\Build\Debug\Tests\Microsoft.TestPlatform.AdapterUtilities.dll
+C:\Users\geoff\AppData\Roaming\7DaysToDie\WalkerSim2_Edit\Build\Debug\Tests\WalkerSimSchema.xsd
+C:\Users\geoff\AppData\Roaming\7DaysToDie\WalkerSim2_Edit\Build\Debug\Tests\WalkerSim.xml
+C:\Users\geoff\AppData\Roaming\7DaysToDie\WalkerSim2_Edit\Build\Debug\Tests\Tests.dll
+C:\Users\geoff\AppData\Roaming\7DaysToDie\WalkerSim2_Edit\Build\Debug\Tests\Tests.pdb
+C:\Users\geoff\AppData\Roaming\7DaysToDie\WalkerSim2_Edit\Tests\obj\Debug\Tests.csproj.AssemblyReference.cache
+C:\Users\geoff\AppData\Roaming\7DaysToDie\WalkerSim2_Edit\Tests\obj\Debug\Tests.csproj.CoreCompileInputs.cache
+C:\Users\geoff\AppData\Roaming\7DaysToDie\WalkerSim2_Edit\Tests\obj\Debug\Tests.csproj.CopyComplete
+C:\Users\geoff\AppData\Roaming\7DaysToDie\WalkerSim2_Edit\Tests\obj\Debug\Tests.dll
+C:\Users\geoff\AppData\Roaming\7DaysToDie\WalkerSim2_Edit\Tests\obj\Debug\Tests.pdb

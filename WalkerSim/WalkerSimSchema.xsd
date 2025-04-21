@@ -305,6 +305,11 @@
                     <xs:documentation>Agents react to world events</xs:documentation>
                 </xs:annotation>
             </xs:enumeration>
+            <xs:enumeration value="AvoidObstacles">
+                <xs:annotation>
+                    <xs:documentation>Agents avoid impassable obstacles</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
         </xs:restriction>
     </xs:simpleType>
 

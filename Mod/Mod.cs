@@ -133,6 +133,10 @@ namespace WalkerSim
                 var elapsed = Utils.Measure(() =>
                 {
                     loaded = simulation.LoadMapData(worldFolder);
+
+
+                    Logging.Out("Sending world folder location to OBstacleMap...");
+                    ObstacleMap.Instance.SetWorldFolderLocation(worldFolder);
                 });
 
                 if (loaded)

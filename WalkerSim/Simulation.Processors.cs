@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.IO;
 
 namespace WalkerSim
 {
@@ -40,6 +41,7 @@ namespace WalkerSim
             { Config.MovementProcessorType.StickToPOIs, StickToPOIs },
             { Config.MovementProcessorType.AvoidPOIs, AvoidPOIs },
             { Config.MovementProcessorType.WorldEvents, WorldEvents },
+            { Config.MovementProcessorType.AvoidObstacles, AvoidObstacles },
         };
 
         private List<MovementProcessor> _processors = new List<MovementProcessor>();
@@ -177,6 +179,23 @@ namespace WalkerSim
                     _state.MaxNeighbourDistance = System.Math.Max(_state.MaxNeighbourDistance, processor.Distance);
                 }
             }
+
+            var folderPath = ObstacleMap.Instance.worldFolder;
+            if (string.IsNullOrEmpty(ObstacleMap.Instance.worldFolder))
+            {
+                var fallback = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
+                folderPath = fallback;
+                Logging.Warn("worldFolder niet gezet — fallback gebruikt: {0}", fallback);
+            }
+            var dtmFile = System.IO.Path.Combine(folderPath, "dtm.raw");
+
+            var mapSize =  this.WorldSize;
+            var width = (int)mapSize.X;
+            var height = (int)mapSize.Y;
+
+            Logging.Info("HeightMap geladen met grootte {0}x{1}", width, height);
+
+            HeightMapGenerator.GenerateObstacleMap(dtmFile, width, height, WorldMins);
         }
 
         private static Vector3 FlockAny(State state, Agent agent, FixedBufferList<Agent> nearby, float distanceSqr, float power)
@@ -603,5 +622,52 @@ namespace WalkerSim
             return sum * power;
         }
 
+        private static Vector3 AvoidObstacles(State state, Agent agent, FixedBufferList<Agent> nearby, float distanceSqr, float power)
+        {
+            if (agent.Velocity == Vector3.Zero)
+            {
+                //Logging.Info("[ZombieSpawnerMod] Agent {0} is idle (no velocity).", agent.Index);
+                return Vector3.Zero;
+            }
+
+            var pos = agent.Position;
+            var velocityNorm = Vector3.Normalize(agent.Velocity);
+            var nextPos = pos + velocityNorm;
+            var distToObstacle = Vector3.Distance(pos, nextPos);
+
+            // Log movement data
+            //Logging.Info("[ZombieSpawnerMod] Agent {0} - CurrentPos: ({1:F2}, {2:F2}) → NextPos: ({3:F2}, {4:F2})", agent.Index, pos.X, pos.Y, nextPos.X, nextPos.Y);
+            //Logging.Info("[ZombieSpawnerMod] Agent {0} - Movement distance: {1:F2}", agent.Index, distToObstacle);
+
+            // Log height data
+            var heightHere = ObstacleMap.Instance.GetHeightAt(pos);
+            var heightThere = ObstacleMap.Instance.GetHeightAt(nextPos);
+            var delta = heightThere - heightHere;
+
+            //Logging.Info("[ZombieSpawnerMod] Agent {0} - Height here: {1:F2}, there: {2:F2}, delta: {3:F2}", agent.Index, heightHere, heightThere, delta);
+
+            // Check for slope too steep
+            if (delta > 2.0f)
+            {
+                //Logging.Info("[ZombieSpawnerMod] Agent {0} - Climb too steep: {1:F2} → {2:F2} (Δ={3:F2}) → avoiding", agent.Index, heightHere, heightThere, delta);
+
+                var avoid = new Vector3(-velocityNorm.Y, velocityNorm.X); // rotate 90°
+                //Logging.Info("[ZombieSpawnerMod] Agent {0} - Avoiding direction: ({1:F2}, {2:F2})", agent.Index, avoid.X, avoid.Y);
+                return avoid * power;
+            }
+
+            // Check for blocked tile
+            if (ObstacleMap.Instance.IsBlocked(nextPos))
+            {
+                //Logging.Info("[ZombieSpawnerMod] Agent {0} - Obstacle detected at ({1:F2}, {2:F2}) → avoiding", agent.Index, nextPos.X, nextPos.Y);
+
+                var avoid = new Vector3(-velocityNorm.Y, velocityNorm.X); // rotate 90°
+                //Logging.Info("[ZombieSpawnerMod] Agent {0} - Avoiding direction: ({1:F2}, {2:F2})", agent.Index, avoid.X, avoid.Y);
+                return avoid * power;
+            }
+
+            //Logging.Info("[ZombieSpawnerMod] Agent {0} - Path is clear.", agent.Index);
+            return Vector3.Zero;
+        }
     }
 }

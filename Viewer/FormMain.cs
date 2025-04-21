@@ -537,7 +537,7 @@ namespace WalkerSim.Viewer
         {
             RenderToBitmap();
 
-            simCanvas.Refresh();
+            simCanvas.Invalidate();
         }
 
         private void OnClickSoundEmit(object sender, EventArgs e)
@@ -679,6 +679,9 @@ namespace WalkerSim.Viewer
 
             var worldPath = Worlds.WorldFolders[worldIdx];
             simulation.LoadMapData(worldPath);
+
+            ObstacleMap.Instance.SetWorldFolderLocation(worldPath);
+            Logging.Info($"[Viewer] ObstacleMap worldFolder ingesteld op: {worldPath}");
 
             ClearRoadBitmap();
             RenderSimulation();
